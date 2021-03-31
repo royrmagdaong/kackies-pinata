@@ -20,31 +20,16 @@
   </div>
 
   <!-- main -->
-  <div @mousedown="closeNavDrawer" class="main" :class="{'slide-right': drawer, 'slide-back': !drawer}">
-    <v-container style="font-weight: 400;" >
-      <div>Nulla porttitor accumsan tincidunt. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada.</div>
-      <v-img
-        :src="`https://picsum.photos/500/300?image=${1 * 5 + 10}`"
-        :lazy-src="`https://picsum.photos/10/6?image=${1 * 5 + 10}`"
-        aspect-ratio="1"
-        class="grey lighten-2 mt-4"
-      >
-        <template v-slot:placeholder>
-          <v-row
-            class="fill-height ma-0"
-            align="center"
-            justify="center"
-          >
-            <v-progress-circular
-              indeterminate
-              color="grey lighten-5"
-            ></v-progress-circular>
-          </v-row>
-        </template>
-      </v-img>
-      <div v-for="i in 5" :key="i">Nulla porttitor accumsan tincidunt. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada.</div>
-    </v-container>
-    
+  <div class="main" :class="{'slide-right': drawer, 'slide-back': !drawer}">
+    <!-- banner -->
+    <app-banner></app-banner>
+
+    <!-- more to explore -->
+    <more-to-explore></more-to-explore>
+
+    <!-- pre order bespoke -->
+    <pre-order></pre-order>
+
     <!-- footer -->
       <app-footer></app-footer>
   </div>
@@ -54,19 +39,23 @@
 <script>
 import NavDrawer from '../components/NavDrawer'
 import Footer from '../components/Footer'
+import Banner from '../components/Banner'
+import PreOrderBeSpoke from '../components/PreOrderBeSpoke'
+import MoreToExplore from '../components/MoreToExplore'
 
 export default {
   name: 'App',
   components: {
     'nav-drawer': NavDrawer,
-    'app-footer': Footer
+    'app-footer': Footer,
+    'app-banner': Banner,
+    'pre-order': PreOrderBeSpoke,
+    'more-to-explore': MoreToExplore
   },
   data:()=>({
     drawer: false,
   }),
   created(){
-
-    window.scrollTo(0, 200);
   },
   methods:{
     openNavDrawer(){
@@ -78,25 +67,15 @@ export default {
       }else{
         const body = document.body;
         // const scrollY = body.style.top;
-        body.style.position = 'relative';
+        body.style.position = '';
 
-        body.style.top = 0;
+        body.style.top = '';
         // body.style.position = 'relative';
         // body.style.top = `-${scrollY}px`;
         // window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        this.$vuetify.goTo(10000, {duration: 400})
+        // this.$vuetify.goTo(1500, {duration: 400, offset: 0})
       }
       this.drawer = !this.drawer;
-    },
-    closeNavDrawer(){
-      if(this.drawer){
-        const body = document.body;
-        const scrollY = body.style.top;
-        body.style.position = '';
-        body.style.top = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
-      this.drawer = false;
     }
   }
 }
@@ -129,7 +108,7 @@ $title-font: 'Source Serif Pro';
   top: 0;
   left: 0;
   z-index: 13;
-  width: 100%;
+  width: 100vw;
   height: 40px;
   border-bottom: 1px solid #f0f1f1;
 }
