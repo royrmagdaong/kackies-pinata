@@ -3,7 +3,7 @@
   <!-- navdrawer 1 -->
   <div class="nav-drawer" :class="{'nav-1-close': nav1, 'nav-1-open': !nav1}">
     <div class="d-flex justify-center nav-drawer-header">
-      <div class="align-self-center">Kackie's Pinata</div>
+      <div class="align-self-center">Pinata Manila Ph</div>
     </div>
     <div class="nav-drawer-body">
         <div class="search px-6 pb-2">
