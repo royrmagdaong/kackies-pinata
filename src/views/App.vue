@@ -22,7 +22,7 @@
   <!-- appbar for small screen and above -->
   <div class="d-none d-sm-flex">
     <transition name="slide-fade">
-    <div class="appbar-2" v-if="offsetTop > 500">
+    <div class="appbar-2" v-if="offsetTop > 720">
       <v-container class="d-flex justify-space-between px-4">
         <div class="d-flex align-center">
           <div class="brandname mr-6">Pinata Manila Ph</div>
@@ -180,5 +180,10 @@ $title-font: 'Source Serif Pro';
 .slide-fade-enter {
   transform: translateY(-20px);
   opacity: 0;
+}
+
+// parralax
+.prx img{
+    height: 260%;
 }
 </style>
